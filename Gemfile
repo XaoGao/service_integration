@@ -2,4 +2,5 @@
 
 source "https://rubygems.org"
 
-gem 'rack', '~> 3.0', '>= 3.0.2'
+gem 'puma', '~> 6.0'
+gem 'sinatra', '~> 3.0', '>= 3.0.4'
