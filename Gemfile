@@ -2,6 +2,7 @@
 
 source "https://rubygems.org"
 
+gem 'debug', '~> 1.7'
 gem 'puma', '~> 6.0'
 gem 'rubocop', '~> 1.39'
 gem 'rubocop-rspec', '~> 2.15'

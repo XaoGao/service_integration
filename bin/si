@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+unless File.exist?("./Rakefile") || File.exist?("./Gemfile")
+  abort "Please run Service integration from the root of the project."
+end
+
+require "rubygems"
+begin
+  require "bundler"
+  Bundler.setup
+rescue StandardError
+end
+
+# APP_PATH = File.expand_path('../config/application', __dir__)
+require_relative "../config/application"
+require_relative "../config/boot"
+
+begin
+  run Sinatra::Application.run!
+rescue StandardError
+end
