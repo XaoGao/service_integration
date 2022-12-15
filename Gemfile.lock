@@ -2,9 +2,16 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    concurrent-ruby (1.1.10)
+    connection_pool (2.3.0)
     debug (1.7.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    et-orbi (1.2.7)
+      tzinfo
+    fugit (1.8.0)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
     io-console (0.5.11)
     irb (1.6.1)
       reline (>= 0.3.0)
@@ -17,10 +24,12 @@ GEM
       ast (~> 2.4.1)
     puma (6.0.0)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     rack (2.2.4)
     rack-protection (3.0.4)
       rack
     rainbow (3.1.1)
+    redis (4.8.0)
     regexp_parser (2.6.1)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -41,12 +50,22 @@ GEM
       rubocop (~> 1.33)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
+    sequel (5.63.0)
+    sidekiq (6.5.8)
+      connection_pool (>= 2.2.5, < 3)
+      rack (~> 2.0)
+      redis (>= 4.5.0, < 5)
+    sidekiq-cron (1.9.0)
+      fugit (~> 1)
+      sidekiq (>= 4.2.1)
     sinatra (3.0.4)
       mustermann (~> 3.0)
       rack (~> 2.2, >= 2.2.4)
       rack-protection (= 3.0.4)
       tilt (~> 2.0)
     tilt (2.0.11)
+    tzinfo (2.0.5)
+      concurrent-ruby (~> 1.0)
     unicode-display_width (2.3.0)
 
 PLATFORMS
@@ -57,6 +76,9 @@ DEPENDENCIES
   puma (~> 6.0)
   rubocop (~> 1.39)
   rubocop-rspec (~> 2.15)
+  sequel (~> 5.63)
+  sidekiq (~> 6.5, >= 6.5.6)
+  sidekiq-cron (~> 1.7)
   sinatra (~> 3.0, >= 3.0.4)
 
 BUNDLED WITH

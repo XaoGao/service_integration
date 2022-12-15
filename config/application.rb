@@ -9,6 +9,9 @@ module SI
   end
 end
 
-require File.join(SI::Application.root_path, "app", "models", "task.rb")
-Dir[File.join(SI::Application.root_path, "app", "models", "*.rb")].sort.each { |file| require file }
+require File.join(SI::Application.root_path, "config", "initializers", "initilaze_sequel.rb")
+require File.join(SI::Application.root_path, "app", "models", "settings", "tasks", "task.rb")
+# Dir[File.join(SI::Application.root_path, "app", "models", "*.rb")].sort.each { |file| require file }
+Dir[File.join(SI::Application.root_path, "app", "models", "settings", "*.rb")].sort.each { |file| require file }
+Dir[File.join(SI::Application.root_path, "app", "models", "settings", "tasks", "*.rb")].sort.each { |file| require file }
 Dir[File.join(SI::Application.root_path, "config", "initializers", "*.rb")].sort.each { |file| require file }
