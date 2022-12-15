@@ -1,7 +1,4 @@
-require "sinatra"
-require "debug"
-require "yaml"
-
 get "/" do
-  "Hello world! \n"
+  debugger
+  "Hello world!"
 end

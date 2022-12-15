@@ -6,17 +6,16 @@ seller:
       password: some_password
     b2b_auth:
       intervals:
-        interval:
-          - work_day: 'true'
-            start_time: '00:00'
-            end_time: '23:59'
-            b2b_login: seller_platform_api
-            b2b_password: '0000000'
-          - work_day: 'false'
-            start_time: '00:00'
-            end_time: '23:59'
-            b2b_login: seller_platform_api
-            b2b_password: '0000000'
+        - work_day: 'true'
+          start_time: '00:00'
+          end_time: '23:59'
+          b2b_login: seller_platform_api
+          b2b_password: '0000000'
+        - work_day: 'false'
+          start_time: '00:00'
+          end_time: '23:59'
+          b2b_login: seller_platform_api
+          b2b_password: '0000000'
       reserves:
         main_reserve_login: merchant
         main_reserve_password: '0000000'
@@ -95,7 +94,7 @@ seller:
         name: 17 Результата команды CancelInventJournal
         run: 'true'
         schedule: 0 0 31 FEB *
-    _name: '5813'
+    name: '5813'
   - in_active: 'true'
     sbermm_auth:
       token: e6fe9de7-b6f8-4635-9f82-7fb2367f3331
@@ -103,17 +102,16 @@ seller:
       password: some_password
     b2b_auth:
       intervals:
-        interval:
-          - work_day: 'true'
-            start_time: '00:00'
-            end_time: '23:59'
-            b2b_login: seller_platform_api
-            b2b_password: '0000000'
-          - work_day: 'false'
-            start_time: '00:00'
-            end_time: '23:59'
-            b2b_login: seller_platform_api
-            b2b_password: '0000000'
+        - work_day: 'true'
+          start_time: '00:00'
+          end_time: '23:59'
+          b2b_login: seller_platform_api
+          b2b_password: '0000000'
+        - work_day: 'false'
+          start_time: '00:00'
+          end_time: '23:59'
+          b2b_login: seller_platform_api
+          b2b_password: '0000000'
       reserves:
         main_reserve_login: merchant
         main_reserve_password: '0000000'
@@ -130,4 +128,4 @@ seller:
         name: 18 Получение данных по доставленным Отправлениям
         run: 'true'
         schedule: 0 0 31 FEB *
-    _name: '18502'
+    name: '18502'

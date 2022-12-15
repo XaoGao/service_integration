@@ -1,5 +1,5 @@
-sellers = YAML.load_file(File.join(SI::Application.root_path, "sellers.#{SI::Config.env}.yml"))
-
-sellers.each do |seller|
-  puts seller.inspect
-end
+SELLERS = YAML.safe_load(
+  File.read(File.expand_path("sellers.#{SI::Config.env}.yml", SI::Application.root_path)),
+  symbolize_names: true).map do |sq|
+    SI::Seller.new(sq.last.first)
+  end
