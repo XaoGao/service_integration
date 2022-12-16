@@ -1,8 +1,6 @@
-module SI
-  module Settings
-    module Tasks
-      class CreateShipmentInAxTask < Task
-      end
+module Settings
+  module Tasks
+    class CreateShipmentInAxTask < Task
     end
   end
 end

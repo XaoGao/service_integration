@@ -1,8 +1,6 @@
-module SI
-  module Settings
-    module Tasks
-      class SendShipmentsToGoodsTaskTask < Task
-      end
+module Settings
+  module Tasks
+    class SendShipmentsToGoodsTaskTask < Task
     end
   end
 end
