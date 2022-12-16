@@ -1,25 +1,23 @@
-module SI
-  class Config
-    class << self
-      attr_reader :env
+module Config
+  class << self
+    attr_reader :env
 
-      def env=(env)
-        raise StandardError unless %w[test dev production].any? { |e| e == env }
+    def env=(env)
+      raise StandardError unless %w[test development production].any? { |e| e == env }
 
-        @env = env
-      end
+      @env = env
+    end
 
-      def test?
-        env == "test"
-      end
+    def test?
+      env == "test"
+    end
 
-      def dev?
-        env == "dev"
-      end
+    def development?
+      env == "development"
+    end
 
-      def production?
-        env == "production"
-      end
+    def production?
+      env == "production"
     end
   end
 end

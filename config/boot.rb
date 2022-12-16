@@ -1,10 +1,16 @@
 ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
 
-require "sinatra"
 require "debug"
-require "yaml"
 require "sequel"
+require "yaml"
+require "sinatra"
 
-require "bundler/setup" # Set up gems listed in the Gemfile.
-require_relative "../lib/config"
-require_relative "../app"
+require "bundler/setup"
+
+require File.join(Application.root_path, "config", "initializers", "initilaze_sequel.rb")
+require File.join(Application.root_path, "app", "models", "settings", "tasks", "task.rb")
+# Dir[File.join(SI::Application.root_path, "app", "models", "*.rb")].sort.each { |file| require file }
+Dir[File.join(Application.root_path, "app", "models", "settings", "*.rb")].sort.each { |file| require file }
+Dir[File.join(Application.root_path, "app", "models", "settings", "tasks", "*.rb")].sort.each { |file| require file }
+Dir[File.join(Application.root_path, "app", "controllers", "*.rb")].sort.each { |file| require file }
+Dir[File.join(Application.root_path, "config", "initializers", "*.rb")].sort.each { |file| require file }

@@ -12,7 +12,6 @@ rescue StandardError
 end
 
 require_relative "../config/application"
-require_relative "../config/boot"
 
 begin
   run Sinatra::Application.run!

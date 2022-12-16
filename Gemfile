@@ -9,4 +9,5 @@ gem "rubocop-rspec", "~> 2.15"
 gem "sinatra", "~> 3.0", ">= 3.0.4"
 gem "sidekiq", "~> 6.5", ">= 6.5.6"
 gem "sidekiq-cron", "~> 1.7"
-gem 'sequel', '~> 5.63'
+gem "sequel", "~> 5.63"
+gem "sqlite3", "~> 1.5", ">= 1.5.4"
