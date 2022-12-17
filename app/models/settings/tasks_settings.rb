@@ -61,5 +61,13 @@ module Settings
 
       @receiving_data_on_delivered_shipments = Tasks::ReceivingDataOnDeliveredShipmentsTask.new tasks_settings[:receiving_data_on_delivered_shipments]
     end
+
+    def tasks
+      [send_stock, create_xml_feed_file, get_new_shipments, confirm_shipments, send_shipments_to_goods,
+       create_journal_in_ax, get_result_command_journal, get_journal_packing, confirm_of_packing, get_receive_shipped,
+       send_shipped_to_goods, receive_delivered_orders_data, create_shipment_in_ax, get_result_command_shipment,
+       send_cancel_shipment_items, create_reject_journal, get_result_command_reject_journal,
+       receiving_data_on_delivered_shipments].compact
+    end
   end
 end

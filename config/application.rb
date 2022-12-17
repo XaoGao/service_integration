@@ -1,3 +1,4 @@
+require "logger"
 require_relative "../lib/config"
 
 module Application
@@ -7,6 +8,10 @@ module Application
 
   def self.root_path
     @root_path ||= File.join(File.dirname(__FILE__), "..")
+  end
+
+  def self.logger
+    @logger ||= Logger.new(STDOUT)
   end
 end
 

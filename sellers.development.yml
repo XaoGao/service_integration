@@ -95,7 +95,7 @@ seller:
         run: 'true'
         schedule: 0 0 31 FEB *
     name: '5813'
-  - in_active: 'true'
+  - is_active: 'true'
     sbermm_auth:
       token: e6fe9de7-b6f8-4635-9f82-7fb2367f3331
       login: seller_platform
@@ -119,7 +119,7 @@ seller:
       create_shipment_in_ax:
         name: 13 Создание заказов на отгрузку в AX
         run: 'true'
-        sch_pdule: 0 0 31 FEB *
+        schedule: 0 0 31 FEB *
       get_result_command_shipment:
         name: 14 _tезультата команды CreateAndShipmentXIAOMIWayBill
         run: strue'
