@@ -15,6 +15,4 @@ module Application
   end
 end
 
-Application.config.env = ARGV[0]
-
 require_relative "./boot"

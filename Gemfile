@@ -11,3 +11,5 @@ gem "sidekiq", "~> 6.5", ">= 6.5.6"
 gem "sidekiq-cron", "~> 1.7"
 gem "sequel", "~> 5.63"
 gem "sqlite3", "~> 1.5", ">= 1.5.4"
+gem 'redis', '~> 4.0'
+gem 'hiredis'

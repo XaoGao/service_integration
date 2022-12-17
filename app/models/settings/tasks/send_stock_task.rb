@@ -3,8 +3,8 @@ module Settings
     class SendStockTask < Task
       attr_reader :set_price, :set_amount, :set_amount_type
 
-      def initialize(task)
-        super task
+      def initialize(task, klass)
+        super task, klass
 
         raise StandardError "set_price can not be nil or empty" if task[:set_price].nil?
         raise StandardError "set_amount can not be nil or empty" if task[:set_amount].nil?

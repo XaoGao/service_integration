@@ -3,8 +3,8 @@ module Settings
     class CreateXmlFeedFileTask < Task
       attr_reader :outletid, :feed_filename, :feed_file_directory_path
 
-      def initialize(task)
-        super task
+      def initialize(task, klass)
+        super task, klass
 
         raise StandardError "outletid can not be nil or empty" if task[:outletid].nil?
         raise StandardError "feed_filename can not be nil or empty" if task[:feed_filename].nil?
