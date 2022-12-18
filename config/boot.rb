@@ -1,3 +1,10 @@
+require "rubygems"
+begin
+  require "bundler"
+  Bundler.setup
+rescue StandardError
+end
+
 ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
 
 require "debug"

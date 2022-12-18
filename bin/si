@@ -4,16 +4,5 @@ unless File.exist?("./Rakefile") || File.exist?("./Gemfile")
   abort "Please run Service integration from the root of the project."
 end
 
-require "rubygems"
-begin
-  require "bundler"
-  Bundler.setup
-rescue StandardError
-end
-
-require_relative "../config/application"
-
-begin
-  run Sinatra::Application.run!
-rescue StandardError
-end
+require_relative "../cli/si"
+SICLI.start(ARGV)
