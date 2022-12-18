@@ -1,18 +1,34 @@
 require "logger"
-require_relative "../lib/config"
+require "dry-configurable"
+# require "dry-logger"
 
 module Application
-  def self.config
-    @config ||= Config
-  end
+  extend Dry::Configurable
 
-  def self.root_path
-    @root_path ||= File.join(File.dirname(__FILE__), "..")
-  end
+  setting :root_path, default: File.join(File.dirname(__FILE__), "..")
 
-  def self.logger
-    @logger ||= Logger.new(STDOUT)
+  setting :env, default: ARGV[0].to_sym #:development
+
+  class << self
+    def logger
+      @logger ||= Logger.new(STDOUT)
+    end
+
+    def development?
+      config.env == :development
+    end
+
+    def test?
+      config.env == :test
+    end
+
+    def production?
+      config.env == :production
+    end
   end
 end
 
 require_relative "./boot"
+
+# require "irb"
+# IRB.start

@@ -1,3 +1,5 @@
-get "/" do
-  "Test"
-end
+# class WelcomeController < Sinatra::Base
+  get "/" do
+    "Test"
+  end
+# end
