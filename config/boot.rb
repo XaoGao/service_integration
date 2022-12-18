@@ -7,18 +7,22 @@ end
 
 ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
 
-require "debug"
-require "sequel"
-require "yaml"
-require "sinatra"
-require "sinatra/base"
-require "sidekiq"
-require "sidekiq-cron"
-require "dry-container"
 require "dry-auto_inject"
+require "dry-container"
 require "dry/transaction"
 require "dry/transaction/operation"
 require "faraday"
+require "sequel"
+require "sidekiq"
+require "sidekiq-cron"
+require "sinatra"
+require "sinatra/base"
+require "yaml"
+
+if Application.test? || Application.development?
+  require "debug"
+  require "faker"
+end
 
 require "bundler/setup"
 
@@ -46,3 +50,7 @@ Dir[File.join(Application.config.root_path, "config", "initializers", "*.rb")].e
 # AllJobs
 require File.join(Application.config.root_path, "app", "jobs", "abstract_job.rb")
 Dir[File.join(Application.config.root_path, "app", "jobs", "*.rb")].each { |file| require file }
+
+if Application.test? || Application.development?
+  Dir[File.join(Application.config.root_path, "rspec", "factories", "*.rb")].each { |file| require file }
+end

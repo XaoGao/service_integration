@@ -1,9 +1,18 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (7.0.4)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
     ast (2.4.2)
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
+    database_cleaner-core (2.0.1)
+    database_cleaner-sequel (2.0.2)
+      database_cleaner-core (~> 2.0.0)
+      sequel
     debug (1.7.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -36,6 +45,10 @@ GEM
       dry-monads (~> 1.6)
     et-orbi (1.2.7)
       tzinfo
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    faker (3.0.0)
+      i18n (>= 1.8.11, < 2)
     faraday (2.7.2)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -44,10 +57,13 @@ GEM
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
     hiredis (0.6.3)
+    i18n (1.12.0)
+      concurrent-ruby (~> 1.0)
     io-console (0.5.11)
     irb (1.6.1)
       reline (>= 0.3.0)
     json (2.6.2)
+    minitest (5.16.3)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.8)
@@ -120,6 +136,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  database_cleaner-sequel (~> 2.0, >= 2.0.2)
   debug (~> 1.7)
   dry-auto_inject (~> 1.0)
   dry-configurable
@@ -127,6 +144,8 @@ DEPENDENCIES
   dry-logger (~> 1.0, >= 1.0.3)
   dry-monads (~> 1.6)
   dry-transaction (~> 0.15.0)
+  factory_bot (~> 6.2, >= 6.2.1)
+  faker (~> 3.0)
   faraday (~> 2.7, >= 2.7.2)
   hiredis
   puma (~> 6.0)

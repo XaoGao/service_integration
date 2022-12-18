@@ -1,7 +1,7 @@
 require "thor"
 
 class SICLI < Thor
-  desc "s ENV", "run application"
+  desc "s ENV", "Run application"
   def s(env = :development)
     if %i[test development production].all? { |e| e != env.to_sym }
       raise StandardError "env must be any [test, development, production]"
@@ -16,7 +16,7 @@ class SICLI < Thor
     end
   end
 
-  desc "con ENV", "run application in irb"
+  desc "con ENV", "Run application in irb"
   def con(env = :development)
     if %i[test development production].all? { |e| e != env.to_sym }
       raise StandardError "env must be any [test, development, production]"

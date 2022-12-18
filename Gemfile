@@ -2,6 +2,7 @@
 
 source "https://rubygems.org"
 
+gem "database_cleaner-sequel", "~> 2.0", ">= 2.0.2"
 gem "debug", "~> 1.7"
 gem "dry-auto_inject", "~> 1.0"
 gem "dry-configurable"
@@ -9,7 +10,9 @@ gem "dry-container", "~> 0.11.0"
 gem "dry-logger", "~> 1.0", ">= 1.0.3"
 gem "dry-monads", "~> 1.6"
 gem "dry-transaction", "~> 0.15.0"
+gem "factory_bot", "~> 6.2", ">= 6.2.1"
 gem "faraday", "~> 2.7", ">= 2.7.2"
+gem "faker", "~> 3.0"
 gem "hiredis"
 gem "puma", "~> 6.0"
 gem "redis", "~> 4.0"
