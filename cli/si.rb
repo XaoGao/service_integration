@@ -26,6 +26,6 @@ class SICLI < Thor
     ARGV[0] = env.to_sym
     require_relative "../config/application"
     require "irb"
-    IRB.start
+    binding.irb
   end
 end
