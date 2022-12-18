@@ -1,5 +1,5 @@
 class HttpService
-  def get(url:, params:, headers:)
+  def get(url:, params: {}, headers: {})
     conn = Faraday.new(
       url:,
       params:,
@@ -9,7 +9,7 @@ class HttpService
     conn.get
   end
 
-  def post(url:, body:, params:, headers:)
+  def post(url:, body: nil, params: {}, headers: {})
     conn = Faraday.new(
       url:,
       params:,
@@ -21,7 +21,7 @@ class HttpService
     end
   end
 
-  def put(url:, body:, params:, headers:)
+  def put(url:, body: nil, params: {}, headers: {})
     conn = Faraday.new(
       url:,
       params:,
@@ -33,7 +33,7 @@ class HttpService
     end
   end
 
-  def delete(url:, body:, params:, headers:)
+  def delete(url:, body: nil, params: {}, headers: {})
     conn = Faraday.new(
       url:,
       params:,

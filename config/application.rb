@@ -10,7 +10,12 @@ module Application
 
   class << self
     def logger
-      @logger ||= Logger.new(STDOUT)
+      @logger ||=
+        if ARGV[0].to_sym == :test
+          NilLogger.new
+        else
+          Logger.new(STDOUT)
+        end
     end
 
     def development?

@@ -22,6 +22,8 @@ require "faraday"
 
 require "bundler/setup"
 
+# Utils
+Dir[File.join(Application.config.root_path, "utils", "*.rb")].each { |file| require file }
 # BD
 require File.join(Application.config.root_path, "config", "initializers", "initialize_sequel.rb")
 # TaskSettings
@@ -34,9 +36,6 @@ Dir[File.join(Application.config.root_path, "app", "models", "settings", "tasks"
 Dir[File.join(Application.config.root_path, "app", "models", "*.rb")].each { |file| require file }
 # AllController
 Dir[File.join(Application.config.root_path, "app", "controllers", "*.rb")].each { |file| require file }
-# AllJobs
-require File.join(Application.config.root_path, "app", "jobs", "abstract_job.rb")
-Dir[File.join(Application.config.root_path, "app", "jobs", "*.rb")].each { |file| require file }
 # AllSErvices
 Dir[File.join(Application.config.root_path, "app", "services", "*.rb")].each { |file| require file }
 Dir[File.join(Application.config.root_path, "app", "services", "**", "*.rb")].each { |file| require file }
@@ -44,3 +43,6 @@ Dir[File.join(Application.config.root_path, "app", "services", "**", "*.rb")].ea
 require File.join(Application.config.root_path, "config", "initializers", "initialize_sellers.rb")
 require File.join(Application.config.root_path, "config", "initializers", "initialize_sidekiq.rb")
 Dir[File.join(Application.config.root_path, "config", "initializers", "*.rb")].each { |file| require file }
+# AllJobs
+require File.join(Application.config.root_path, "app", "jobs", "abstract_job.rb")
+Dir[File.join(Application.config.root_path, "app", "jobs", "*.rb")].each { |file| require file }

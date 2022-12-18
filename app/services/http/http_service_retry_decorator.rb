@@ -7,10 +7,10 @@ class HttpServiceRetryDecorator
     @http_service = http_service
   end
 
-  def get(url:, params:, headers:)
+  def get(url:, params: {}, headers: {})
     attempts ||= 1
 
-    http_service.get(url, params, headers)
+    http_service.get(url:, params:, headers:)
   rescue StandardError => e
     Application.logger.error e.message
 
@@ -24,9 +24,9 @@ class HttpServiceRetryDecorator
     raise
   end
 
-  def post(url:, body:, params:, headers:)
+  def post(url:, body: nil, params: {}, headers: {})
     attempts ||= 1
-    http_service.post(url, body, params, headers)
+    http_service.post(url:, body:, params:, headers:)
   rescue StandardError => e
     Application.logger.error e.message
 
@@ -40,9 +40,9 @@ class HttpServiceRetryDecorator
     raise
   end
 
-  def put(url:, body:, params:, headers:)
+  def put(url:, body: nil, params: {}, headers: {})
     attempts ||= 1
-    http_service.put(url, body, params, headers)
+    http_service.put(url:, body:, params:, headers:)
   rescue StandardError => e
     Application.logger.error e.message
 
@@ -56,9 +56,9 @@ class HttpServiceRetryDecorator
     raise
   end
 
-  def delete(url:, body:, params:, headers:)
+  def delete(url:, body: nil, params: {}, headers: {})
     attempts ||= 1
-    http_service.delete(url, body, params, headers)
+    http_service.delete(url:, body:, params:, headers:)
   rescue StandardError => e
     Application.logger.error e.message
 
