@@ -3,7 +3,7 @@ FactoryBot.define do
   factory :shipment do
     merchant { FactoryBot.create(:merchant) }
 
-    status { 0 }
+    status { "init" }
     external_num { Faker::Number.number(digits: 10) }
     internal_num { Faker::Number.number(digits: 10) }
     ax_journal_id { Faker::Barcode.ean(8) }

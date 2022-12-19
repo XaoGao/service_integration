@@ -4,7 +4,7 @@ FactoryBot.define do
     shipment { FactoryBot.create(:shipment) }
 
     sequence(:item_index, 100) { |n| n }
-    status { 0 }
+    status { "init" }
     offer_id { Faker::Barcode.ean(8) }
     seller_id { Faker::Barcode.ean(8) }
     price { Faker::Number.positive }

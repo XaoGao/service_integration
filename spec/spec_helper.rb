@@ -2,6 +2,7 @@ ARGV.clear
 ARGV[0] = :test
 require_relative "../config/application"
 require "database_cleaner-sequel"
+require "aasm/rspec"
 require "factory_bot"
 
 RSpec.configure do |config|

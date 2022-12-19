@@ -7,6 +7,7 @@ end
 
 ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
 
+require "aasm"
 require "dry-auto_inject"
 require "dry-container"
 require "dry/transaction"

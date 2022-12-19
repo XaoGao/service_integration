@@ -4,7 +4,7 @@ Sequel.migration do
       primary_key :id
       foreign_key :merchant_id, :merchants
 
-      Integer  :status
+      String   :status
       String   :external_num
       String   :internal_num
       String   :ax_journal_id
