@@ -1,47 +1,10 @@
-class HttpService
-  def get(url:, params: {}, headers: {})
-    conn = Faraday.new(
-      url:,
-      params:,
-      headers: { "Content-Type" => "application/json" }.merge(headers)
-    )
+module Http
+  class HttpService
+    include ::AutoInject["http_client"]
 
-    conn.get
-  end
-
-  def post(url:, body: nil, params: {}, headers: {})
-    conn = Faraday.new(
-      url:,
-      params:,
-      headers: { "Content-Type" => "application/json" }.merge(headers)
-    )
-
-    conn.post do |req|
-      req.body = body.to_json
-    end
-  end
-
-  def put(url:, body: nil, params: {}, headers: {})
-    conn = Faraday.new(
-      url:,
-      params:,
-      headers: { "Content-Type" => "application/json" }.merge(headers)
-    )
-
-    conn.put do |req|
-      req.body = body.to_json
-    end
-  end
-
-  def delete(url:, body: nil, params: {}, headers: {})
-    conn = Faraday.new(
-      url:,
-      params:,
-      headers: { "Content-Type" => "application/json" }.merge(headers)
-    )
-
-    conn.delete do |req|
-      req.body = body.to_json
+    def get_catalog_categories(account)
+      http_client.get(url: "http://localhost:4567/Api/GetCatalogCategories",
+                      params: { login: account.login, password: account.password, responseFormat: 1 })
     end
   end
 end

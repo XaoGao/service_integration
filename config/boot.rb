@@ -35,13 +35,16 @@ require File.join(Application.config.root_path, "config", "initializers", "initi
 require File.join(Application.config.root_path, "app", "models", "settings", "tasks", "task.rb")
 # AllSettings
 Dir[File.join(Application.config.root_path, "app", "models", "settings", "*.rb")].each { |file| require file }
+Dir[File.join(Application.config.root_path, "app", "models", "settings", "**", "*.rb")].each { |file| require file }
 # AllTasks
 Dir[File.join(Application.config.root_path, "app", "models", "settings", "tasks", "*.rb")].each { |file| require file }
 # AllModels
 Dir[File.join(Application.config.root_path, "app", "models", "*.rb")].each { |file| require file }
 # AllController
 Dir[File.join(Application.config.root_path, "app", "controllers", "*.rb")].each { |file| require file }
-# AllSErvices
+
+Dir[File.join(Application.config.root_path, "config", "initializers", "*.rb")].each { |file| require file }
+# AllServices
 Dir[File.join(Application.config.root_path, "app", "services", "*.rb")].each { |file| require file }
 Dir[File.join(Application.config.root_path, "app", "services", "**", "*.rb")].each { |file| require file }
 # Initializers

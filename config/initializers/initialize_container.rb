@@ -5,12 +5,14 @@ end
 
 # TODO: add another services and repository in container
 
-MyContainer.register "http_service", -> {
-                                       HttpServiceRetryDecorator.new(
-                                         HttpServiceLoggerDecorator.new(
-                                           HttpService.new
+MyContainer.register "http_client", -> {
+                                       Http::HttpClientRetryDecorator.new(
+                                         Http::HttpClientLoggerDecorator.new(
+                                           Http::HttpClient.new
                                          )
                                        )
                                      }
+
+MyContainer.register "http_service", -> { Http::HttpService.new }
 
 AutoInject = Dry::AutoInject(MyContainer)
