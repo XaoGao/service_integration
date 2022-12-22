@@ -3,8 +3,8 @@ module Http
     include ::AutoInject["http_client"]
 
     def get_catalog_categories(account)
-      response = http_client.get(url: "http://localhost:4567/Api/GetCatalogCategories",
-                      params: { login: account.login, password: account.password, responseFormat: 1 })
+      response = http_client.get(url: "#{ENV.fetch('B2B_URL')}/Api/GetCatalogCategories",
+                                 params: { login: account.login, password: account.password, responseFormat: 1 })
 
       raise StandardError "Запрос GetCatalogCategories вернулся с ошибкой" unless response.success?
 
@@ -12,7 +12,7 @@ module Http
     end
 
     def is_work_day(auth_header)
-      http_client.get(url: "http://localhost:4567/Api/IsWorkDay",
+      http_client.get(url: "#{ENV.fetch('B2B_URL')}/Api/IsWorkDay",
                       headers: auth_header)
 
       raise StandardError "Запрос IsWorkDay вернулся с ошибкой" unless response.success?
@@ -21,7 +21,7 @@ module Http
     end
 
     def get_full_stock(account)
-      http_client.get(url: "http://localhost:4567/Api/GetFullStock",
+      http_client.get(url: "#{ENV.fetch('B2B_URL')}/Api/GetFullStock",
                       params: { login: account.login, password: account.password, responseFormat: 1 })
 
       raise StandardError "Запрос GetFullStock вернулся с ошибкой" unless response.success?
