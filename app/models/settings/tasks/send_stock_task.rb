@@ -14,6 +14,10 @@ module Settings
         @set_amount = task[:set_amount]
         @set_amount_type = task[:set_amount_type]
       end
+
+      def off
+        !set_amount && !set_price
+      end
     end
   end
 end

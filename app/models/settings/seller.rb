@@ -15,5 +15,29 @@ module Settings
       @tasks_settings = TasksSettings.new seller[:tasks_settings]
       @name = seller[:name]
     end
+
+    def header_for_work_day
+      interval = b2b_auth.intervals.first
+
+      if interval.nil?
+        raise StandardError "Нет логина/пароля для получения рабочего дня"
+      end
+
+      Account.new(interval.b2b_login, interval.b2b_password)
+    end
+
+    def account_by_interval(work_day)
+      interval = b2b_auth.intervals.find { |i| i.work_day == work_day }
+
+      if interval.nil?
+        raise StandardError "Нет логина/пароля для указаного дня"
+      end
+
+      Account.new(interval.b2b_login, interval.b2b_password)
+    end
+
+    def account
+      Account.new(b2b_auth.reserves.main_reserve_login, b2b_auth.reserves.main_reserve_password)
+    end
   end
 end

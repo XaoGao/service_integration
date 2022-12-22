@@ -34,6 +34,7 @@ require File.join(Application.config.root_path, "config", "initializers", "initi
 # TaskSettings
 require File.join(Application.config.root_path, "app", "models", "settings", "tasks", "task.rb")
 # AllSettings
+require File.join(Application.config.root_path, "app", "models", "settings", "account.rb")
 Dir[File.join(Application.config.root_path, "app", "models", "settings", "*.rb")].each { |file| require file }
 Dir[File.join(Application.config.root_path, "app", "models", "settings", "**", "*.rb")].each { |file| require file }
 # AllTasks

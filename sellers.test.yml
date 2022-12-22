@@ -1,20 +1,20 @@
 seller:
-  - is_active: 'true'
+  - is_active: true
     sbermm_auth:
       token: e6fe9de7-b6f8-4635-9f82-7fb2367f3331
       login: seller_platform
       password: some_password
     b2b_auth:
       intervals:
-        - work_day: 'true'
+        - work_day: true
           start_time: '00:00'
           end_time: '23:59'
-          b2b_login: seller_platform_api
+          b2b_login: seller_platform_api1
           b2b_password: '0000000'
-        - work_day: 'false'
+        - work_day: false
           start_time: '00:00'
           end_time: '23:59'
-          b2b_login: seller_platform_api
+          b2b_login: seller_platform_api2
           b2b_password: '0000000'
       reserves:
         main_reserve_login: merchant
@@ -22,92 +22,92 @@ seller:
     tasks_settings:
       send_stock:
         name: 01 Передать сток
-        run: 'true'
-        set_price: 'false'
-        set_amount: 'true'
+        run: true
+        set_price: false
+        set_amount: true
         set_amount_type: APIAvailableReservedQty
         schedule: 0 0 31 FEB *
       create_xml_feed_file:
         name: 02 Генерация XML-feed файла
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
         outletid: '0'
         feed_filename: GOODS_Products_Feed.xml
         feed_file_directory_path: \\B2B-TEST-APP1\wwwroot\b2b-test.dev.gkm\AppData\files
       get_new_shipments:
         name: 03 Получение данных о новых Отправлениях
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       confirm_shipments:
         name: 04 Проверка цен и резервирование Лотов
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       send_shipments_to_goods:
         name: 05 Подтверждение/отмена Лотов в Отправлении
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       create_journal_in_ax:
         name: 06 Создание Журналов Переноса
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       get_result_command_journal:
         name: 07 Получение результата выполнения  CreateJournal
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       get_journal_packing:
         name: 08 Получение данных по Упаковке Журнала в AX
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       confirm_of_packing:
         name: 09 Подтверждение/отмена комплектации Отправления
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       get_receive_shipped:
         name: 10 Получение данных по Отгрузке Журнала в AX
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       send_shipped_to_goods:
         name: 11 Подтверждение/отмена отгрузки Лотов в Отправлении
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       receive_delivered_orders_data:
         name: 12 Получение данных по доставленным Отправлениям
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       create_shipment_in_ax:
         name: 13 Создание заказов на отгрузку в AX
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       get_result_command_shipment:
         name: 14 Результата команды CreateAndShipmentXIAOMIWayBill
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       send_cancel_shipment_items:
         name: 15 Рассылка писем по отмененным лотам
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       create_reject_journal:
         name: 16 Отмена Журналов с отмененными лотами
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       get_result_command_reject_journal:
         name: 17 Результата команды CancelInventJournal
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
     name: '5813'
-  - is_active: 'true'
+  - is_active: true
     sbermm_auth:
       token: e6fe9de7-b6f8-4635-9f82-7fb2367f3331
       login: seller_platform
       password: some_password
     b2b_auth:
       intervals:
-        - work_day: 'true'
+        - work_day: true
           start_time: '00:00'
           end_time: '23:59'
           b2b_login: seller_platform_api
           b2b_password: '0000000'
-        - work_day: 'false'
+        - work_day: false
           start_time: '00:00'
           end_time: '23:59'
           b2b_login: seller_platform_api
@@ -118,7 +118,7 @@ seller:
     tasks_settings:
       create_shipment_in_ax:
         name: 13 Создание заказов на отгрузку в AX
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
       get_result_command_shipment:
         name: 14 _tезультата команды CreateAndShipmentXIAOMIWayBill
@@ -126,6 +126,6 @@ seller:
         schedule: 0 0 31 FEB *
       receiving_data_on_delivered_shipments:
         name: 18 Получение данных по доставленным Отправлениям
-        run: 'true'
+        run: true
         schedule: 0 0 31 FEB *
     name: '18502'
