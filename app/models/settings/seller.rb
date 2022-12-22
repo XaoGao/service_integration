@@ -23,7 +23,7 @@ module Settings
         raise StandardError "Нет логина/пароля для получения рабочего дня"
       end
 
-      Account.new(interval.b2b_login, interval.b2b_password)
+      Account.new(login: interval.b2b_login, password: interval.b2b_password)
     end
 
     def account_by_interval(work_day)
@@ -33,11 +33,15 @@ module Settings
         raise StandardError "Нет логина/пароля для указаного дня"
       end
 
-      Account.new(interval.b2b_login, interval.b2b_password)
+      Account.new(login: interval.b2b_login, password: interval.b2b_password)
     end
 
     def account
-      Account.new(b2b_auth.reserves.main_reserve_login, b2b_auth.reserves.main_reserve_password)
+      Account.new(login: b2b_auth.reserves.main_reserve_login, password: b2b_auth.reserves.main_reserve_password)
+    end
+
+    def specify_quantity(account)
+      b2b_auth.reserves.account == account && tasks_settings.send_stock.set_amount
     end
   end
 end

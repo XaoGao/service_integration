@@ -45,7 +45,17 @@ class SendStockJob < AbstractJob
     send_get_full_stock seller.account
   end
 
-  def check_reserve_status
+  def check_reserve_status(account)
+    http_service.check_reserve_status account
+  end
 
+  def send_get_full_stock(account)
+    full_stock = http_service.get_full_stock account
+    # TODO: check response body [Header.Status]
+    if full_stock.CodeStatusIsZero
+      Application.logger.error "Прерывание алгоритма! GetFull_stock вернулся с ошибкой: #{full_stock.ErrorMessage()}"
+    end
+
+    full_stock
   end
 end
