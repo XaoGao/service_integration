@@ -14,5 +14,6 @@ MyContainer.register "http_client", -> {
                                      }
 
 MyContainer.register "http_service", -> { Http::HttpService.new }
+MyContainer.register "mail_service", -> { Mail::MailService.new }
 
 AutoInject = Dry::AutoInject(MyContainer)

@@ -23,7 +23,7 @@ seller:
       send_stock:
         name: 01 Передать сток
         run: true
-        set_price: false
+        set_price: true
         set_amount: true
         set_amount_type: APIAvailableReservedQty
         schedule: 0 0 31 FEB *
