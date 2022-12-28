@@ -5,6 +5,8 @@ require "database_cleaner-sequel"
 require "aasm/rspec"
 require "factory_bot"
 
+Dir[File.join(Application.config.root_path, "rspec", "factories", "*.rb")].each { |file| require file }
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

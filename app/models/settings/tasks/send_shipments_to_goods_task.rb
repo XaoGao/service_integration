@@ -1,6 +1,6 @@
 module Settings
   module Tasks
-    class SendShipmentsToGoodsTaskTask < Task
+    class SendShipmentsToGoodsTask < Task
     end
   end
 end

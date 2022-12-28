@@ -19,7 +19,7 @@ module Settings
         @confirm_shipments = Tasks::ConfirmShipmentsTask.new(tasks_settings[:confirm_shipments], "ConfirmShipmentsJob")
       end
       unless tasks_settings[:send_shipments_to_goods].nil?
-        @send_shipments_to_goods = Tasks::SendShipmentsToGoodsTaskTask.new(tasks_settings[:send_shipments_to_goods], "SendShipmentsToGoodsTaskJob")
+        @send_shipments_to_goods = Tasks::SendShipmentsToGoodsTask.new(tasks_settings[:send_shipments_to_goods], "SendShipmentsToGoodsTaskJob")
       end
       unless tasks_settings[:create_journal_in_ax].nil?
         @create_journal_in_ax = Tasks::CreateJournalInAxTask.new(tasks_settings[:create_journal_in_ax], "CreateJournalInAxJob")

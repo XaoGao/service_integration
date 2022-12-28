@@ -1,7 +1,7 @@
 class AbstractJob
   include Sidekiq::Job
 
-  include Dry::Monads[:result]
+  include Dry::Monads[:maybe, :result, :do]
 
   def perform(merchant_id, seller_name, task_name)
     raise ArgumentError "seller_name can not be nil" if seller_name.nil?

@@ -1,8 +1,6 @@
 class SendStockJob < AbstractJob
   include AutoInject["http_service", "mail_service"]
 
-  include Dry::Monads[:maybe, :result, :do]
-
   def do_job(seller, _merchant)
     if seller.tasks_settings.send_stock.off
       Application.logger.info "Передача цен и товарных остатков отключена"

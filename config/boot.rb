@@ -25,6 +25,7 @@ require "sinatra"
 require "sinatra/base"
 require "yaml"
 require "mail"
+require "zeitwerk"
 
 if Application.test? || Application.development?
   require "debug"
@@ -33,35 +34,18 @@ end
 
 require "bundler/setup"
 
-# Utils
-Dir[File.join(Application.config.root_path, "utils", "*.rb")].each { |file| require file }
-# BD
 require File.join(Application.config.root_path, "config", "initializers", "initialize_sequel.rb")
-# TaskSettings
-require File.join(Application.config.root_path, "app", "models", "settings", "tasks", "task.rb")
-# AllSettings
-require File.join(Application.config.root_path, "app", "models", "settings", "account.rb")
-Dir[File.join(Application.config.root_path, "app", "models", "settings", "*.rb")].each { |file| require file }
-Dir[File.join(Application.config.root_path, "app", "models", "settings", "**", "*.rb")].each { |file| require file }
-# AllTasks
-Dir[File.join(Application.config.root_path, "app", "models", "settings", "tasks", "*.rb")].each { |file| require file }
-# AllModels
-Dir[File.join(Application.config.root_path, "app", "models", "*.rb")].each { |file| require file }
-# AllController
-Dir[File.join(Application.config.root_path, "app", "controllers", "*.rb")].each { |file| require file }
+loader = Zeitwerk::Loader.new
+loader.push_dir("#{__dir__}/../app")
+loader.push_dir("#{__dir__}/../utils")
 
-Dir[File.join(Application.config.root_path, "config", "initializers", "*.rb")].each { |file| require file }
-# AllServices
-Dir[File.join(Application.config.root_path, "app", "services", "*.rb")].each { |file| require file }
-Dir[File.join(Application.config.root_path, "app", "services", "**", "*.rb")].each { |file| require file }
-# Initializers
-require File.join(Application.config.root_path, "config", "initializers", "initialize_sellers.rb")
-require File.join(Application.config.root_path, "config", "initializers", "initialize_sidekiq.rb")
-Dir[File.join(Application.config.root_path, "config", "initializers", "*.rb")].each { |file| require file }
-# AllJobs
-require File.join(Application.config.root_path, "app", "jobs", "abstract_job.rb")
-Dir[File.join(Application.config.root_path, "app", "jobs", "*.rb")].each { |file| require file }
+# TODO: read all folders in app
+# dirs = Dir.glob(File.join(__dir__, "..")).select { |f| File.directory? f }
 
-if Application.test? || Application.development?
-  Dir[File.join(Application.config.root_path, "rspec", "factories", "*.rb")].each { |file| require file }
+%w[models controllers services jobs].each do |dir|
+  loader.push_dir("#{__dir__}/../app/#{dir}")
 end
+
+loader.setup # ready!
+
+Dir[File.join(Application.config.root_path, "config", "initializers", "*.rb")].each { |file| require file }
