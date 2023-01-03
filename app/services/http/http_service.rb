@@ -14,12 +14,12 @@ module Http
     end
 
     def is_work_day(auth_header)
-      response = http_client.get(url: "#{ENV.fetch('B2B_URL')}/Api/IsWorkDay",
+      response = http_client.get(url: "#{ENV.fetch('B2B_URL')}/api/isworkday",
                                  headers: auth_header)
 
       Failure(:unsuccess_http_status) unless response.success?
 
-      Success(JSON.parse(response_body).deep_symbolize_keys)
+      Success(response.body)
     end
 
     def get_full_stock(account)
@@ -43,9 +43,7 @@ module Http
     private
 
     def handle_b2b_response(response_body:)
-      json = JSON.parse(response_body).deep_symbolize_keys
-
-      maybe_code = Maybe(json).maybe { |body| body[:header] }.maybe { |header| header[:code] }
+      maybe_code = Maybe(response_body).maybe { |body| body[:header] }.maybe { |header| header[:code] }
 
       case maybe_code
       in Some(code)

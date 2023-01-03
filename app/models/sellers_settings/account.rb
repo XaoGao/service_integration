@@ -8,6 +8,11 @@ module SellersSettings
     def ==(other)
       login == other.login && password == other.password
     end
+
+    def to_hash
+      { login: login, password: password }
+    end
+
     # attr_reader :login, :password
 
     # def initialize(login, password)

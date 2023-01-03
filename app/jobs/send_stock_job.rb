@@ -6,7 +6,6 @@ class SendStockJob < AbstractJob
       Application.logger.info "Передача цен и товарных остатков отключена"
       return Success
     end
-
     stock_result = get_stock(seller)
     if stock_result.failure?
       return Failure("Прерывание алгоритма! GetFullStock вернулся с ошибкой: #{stock_result.failure}")
@@ -30,11 +29,11 @@ class SendStockJob < AbstractJob
 
       current_account = seller.account_by_interval(work_day.value![:is_work_day])
 
-      full_stock = http_service.get_full_stock(seller.account)
+      full_stock = http_service.get_full_stock(seller.account.to_hash)
       return full_stock if full_stock.failure?
 
       if seller.specify_quantity(current_account)
-        check_response = http_service.check_reserve_status(seller.account)
+        check_response = http_service.check_reserve_status(seller.account.to_hash)
         return check_response if check_response.failure?
 
         Some(update_amount(full_stock.value!, check_response.value!))

@@ -5,7 +5,9 @@ module Http
         url:,
         params:,
         headers: { "Content-Type" => "application/json" }.merge(headers)
-      )
+      ) do |f|
+        f.response :json, parser_options: { symbolize_names: true }
+      end
 
       conn.get
     end
@@ -15,7 +17,9 @@ module Http
         url:,
         params:,
         headers: { "Content-Type" => "application/json" }.merge(headers)
-      )
+      ) do |f|
+        f.response :json, parser_options: { symbolize_names: true }
+      end
 
       conn.post do |req|
         req.body = body.to_json
@@ -27,7 +31,9 @@ module Http
         url:,
         params:,
         headers: { "Content-Type" => "application/json" }.merge(headers)
-      )
+      ) do |f|
+        f.response :json, parser_options: { symbolize_names: true }
+      end
 
       conn.put do |req|
         req.body = body.to_json
@@ -39,7 +45,9 @@ module Http
         url:,
         params:,
         headers: { "Content-Type" => "application/json" }.merge(headers)
-      )
+      ) do |f|
+        f.response :json, parser_options: { symbolize_names: true }
+      end
 
       conn.delete do |req|
         req.body = body.to_json

@@ -48,4 +48,4 @@ end
 
 loader.setup # ready!
 
-# Dir[File.join(Application.config.root_path, "config", "initializers", "*.rb")].each { |file| require file }
+Dir[File.join(Application.config.root_path, "config", "initializers", "*.rb")].each { |file| require file }
