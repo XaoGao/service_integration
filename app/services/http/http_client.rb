@@ -6,7 +6,7 @@ module Http
         params:,
         headers: { "Content-Type" => "application/json" }.merge(headers)
       ) do |f|
-        f.response :json, parser_options: { symbolize_names: true }
+        f.response :json_to_snake_case_response
       end
 
       conn.get
@@ -18,7 +18,7 @@ module Http
         params:,
         headers: { "Content-Type" => "application/json" }.merge(headers)
       ) do |f|
-        f.response :json, parser_options: { symbolize_names: true }
+        f.response :json_to_snake_case_response
       end
 
       conn.post do |req|
@@ -32,7 +32,7 @@ module Http
         params:,
         headers: { "Content-Type" => "application/json" }.merge(headers)
       ) do |f|
-        f.response :json, parser_options: { symbolize_names: true }
+        f.response :json_to_snake_case_response
       end
 
       conn.put do |req|
@@ -46,7 +46,7 @@ module Http
         params:,
         headers: { "Content-Type" => "application/json" }.merge(headers)
       ) do |f|
-        f.response :json, parser_options: { symbolize_names: true }
+        f.response :json_to_snake_case_response
       end
 
       conn.delete do |req|

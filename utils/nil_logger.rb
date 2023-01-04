@@ -1,4 +1,4 @@
-require 'logger'
+require "logger"
 
 class NilLogger < Logger
   def initialize(*); end

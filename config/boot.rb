@@ -47,5 +47,7 @@ loader.push_dir("#{__dir__}/../utils")
 end
 
 loader.setup # ready!
-
+require_relative "../utils/faraday_middleware/json_to_snake_case_response"
+require_relative "../utils/string"
+require_relative "../utils/hash"
 Dir[File.join(Application.config.root_path, "config", "initializers", "*.rb")].each { |file| require file }
