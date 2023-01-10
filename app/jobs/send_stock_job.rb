@@ -6,6 +6,7 @@ class SendStockJob < AbstractJob
       Application.logger.info "Передача цен и товарных остатков отключена"
       return Success
     end
+
     stock_result = get_stock(seller)
     if stock_result.failure?
       return Failure("Прерывание алгоритма! GetFullStock вернулся с ошибкой: #{stock_result.failure}")
@@ -57,9 +58,9 @@ class SendStockJob < AbstractJob
   def update_amount(stock, check_reserve_status)
     stock[:body][:category_items].each do |item|
       reserve_item = check_reserve_status[:body][:ware_items].find do |i|
-        i[:ItemId] == item[:WareArticle] && (i[:ExternalId].nil? || i[:ExternalId].empty?)
+        i[:item_id] == item[:ware_article] && (i[:external_id].nil? || i[:external_id].empty?)
       end
-      item[:ReservedQty] = reserve_item.nil? ? reserve_item[:ReservedQty].to_s : "0"
+      item[:reserved_qty] = reserve_item.nil? ? reserve_item[:reserved_qty].to_s : "0"
     end
   end
 
